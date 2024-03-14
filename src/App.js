@@ -25,8 +25,13 @@ const GenerateList = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleGenerateActivity}>Generate Activity</button>
+    <div className="container mx-auto my-8 text-center">
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={handleGenerateActivity}
+      >
+        Generate Activity
+      </button>
       {activity && <ExpandableListItem item={activity} />}
     </div>
   );
@@ -40,16 +45,26 @@ const ExpandableListItem = ({ item }) => {
   };
 
   return (
-    <div style={{ margin: "10px", border: "1px solid black", padding: "10px" }}>
-      <div onClick={toggleExpansion} style={{ cursor: "pointer" }}>
-        {item.activity}
+    <div className="container mx-auto my-4 border border-gray-400 rounded-lg shadow-md">
+      <div className="p-4 cursor-pointer" onClick={toggleExpansion}>
+        <div className="font-bold text-xl">{item.activity}</div>
       </div>
       {expanded && (
-        <div>
-          <p>Type: {item.type}</p>
-          <p>Participants: {item.participants}</p>
-          <p>Price: {item.price}</p>
-          <p>Accessibility: {item.accessibility}</p>
+        <div className="p-4">
+          <p>
+            <span className="font-semibold">Type:</span> {item.type}
+          </p>
+          <p>
+            <span className="font-semibold">Participants:</span>{" "}
+            {item.participants}
+          </p>
+          <p>
+            <span className="font-semibold">Price:</span> {item.price}
+          </p>
+          <p>
+            <span className="font-semibold">Accessibility:</span>{" "}
+            {item.accessibility}
+          </p>
         </div>
       )}
     </div>
